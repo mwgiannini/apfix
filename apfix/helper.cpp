@@ -6,9 +6,10 @@
 //
 
 #include "helper.hpp"
+#include <string>
 
-extern "C" double getValue(char* input) {
-    return 0;
+extern "C" double getValue(const char* input) {
+    return std::stod(input);
 }
 
 bool isHelpFlag(char* argument) {
