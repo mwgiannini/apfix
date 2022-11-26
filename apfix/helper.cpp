@@ -13,3 +13,12 @@ bool isHelpFlag(char* argument) {
 bool isValidExpression(char* argument) {
     return true;
 }
+
+string infixToPostfix(char* argument) {
+    string result = argument;
+    while(*argument != '\0'){
+        cout << argument << endl;
+        argument ++;
+    }
+    return result;
+}
