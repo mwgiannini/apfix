@@ -7,6 +7,10 @@
 
 #include "helper.hpp"
 
+extern "C" double getValue(char* input) {
+    return 0;
+}
+
 bool isHelpFlag(char* argument) {
     return true;
 }

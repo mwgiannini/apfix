@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C7452B432932983C00B859B1 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C7452B422932983C00B859B1 /* main.cpp */; };
 		C7452B4B2932987300B859B1 /* helper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C7452B492932987300B859B1 /* helper.cpp */; };
+		C7452B4D29329B1A00B859B1 /* eval.s in Sources */ = {isa = PBXBuildFile; fileRef = C7452B4C29329B1A00B859B1 /* eval.s */; };
+		C7452B4F2932A33C00B859B1 /* test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C7452B4E2932A33C00B859B1 /* test.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,6 +29,8 @@
 		C7452B422932983C00B859B1 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		C7452B492932987300B859B1 /* helper.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = helper.cpp; sourceTree = "<group>"; };
 		C7452B4A2932987300B859B1 /* helper.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = helper.hpp; sourceTree = "<group>"; };
+		C7452B4C29329B1A00B859B1 /* eval.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = eval.s; sourceTree = "<group>"; };
+		C7452B4E2932A33C00B859B1 /* test.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = test.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,9 +63,11 @@
 		C7452B412932983C00B859B1 /* apfix */ = {
 			isa = PBXGroup;
 			children = (
+				C7452B4E2932A33C00B859B1 /* test.cpp */,
 				C7452B422932983C00B859B1 /* main.cpp */,
 				C7452B492932987300B859B1 /* helper.cpp */,
 				C7452B4A2932987300B859B1 /* helper.hpp */,
+				C7452B4C29329B1A00B859B1 /* eval.s */,
 			);
 			path = apfix;
 			sourceTree = "<group>";
@@ -124,8 +129,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C7452B432932983C00B859B1 /* main.cpp in Sources */,
 				C7452B4B2932987300B859B1 /* helper.cpp in Sources */,
+				C7452B4D29329B1A00B859B1 /* eval.s in Sources */,
+				C7452B4F2932A33C00B859B1 /* test.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
