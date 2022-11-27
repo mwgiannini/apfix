@@ -11,6 +11,7 @@
 
 int main(int argc, char** argv) {
     char* argument;
+    char* postfix;
     double result;
     
     try {
@@ -24,16 +25,12 @@ int main(int argc, char** argv) {
             << "usage: apfix <expression>" << std::endl;
         }
         
-//        //Validate the input
-//        else if(!isValidExpression(argument)) {
-//            throw "Invalid expression!";
-//        }
-        
         // Infix to Postfix
-        cout << infixToPostfix(argument);
+        postfix = infixToPostfix(argument);
         
         // Evaluate the expression
-        
+        result = evalPostfix(postfix);
+        cout << result;
     }
     catch ( const char* e ) {
         std::cout << e << '\n'
