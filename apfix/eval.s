@@ -27,7 +27,6 @@ movq %rdi, %rcx
 xorq %rbx, %rbx                      # Number of characters in the operand buffer
 
 parse:                              # Parse the input string
-
 lodsb                               # Get the next character
 cmpb $',', %al
 je comma                            # Jump if ,
@@ -40,7 +39,6 @@ je multiply                         # Jump if /
 cmpb $'/', %al
 je divide                           # Jump if *
 jmp operand                         # Jump if anything else (part of an operand)
-
 continue:
 loop parse
 
@@ -57,19 +55,16 @@ jmp continue
 comma:
 cmp $0, %rbx                        # Continue if the buffer is empty
 je continue
-
 leaq buffer(%rip), %rdx             # Null terminate the buffered string
 movb $0, %al
 movb %al, (%rdx, %rbx, 1)
 xorq %rbx, %rbx
-
 leaq buffer(%rip), %rdi             # Get the floating point value of the string in the buffer
 push %rcx
 push %rsi
 call _getValue
 pop %rsi
 pop %rcx
-
 pushsd %xmm0                        # Push the value to the stack
 # No need to clear the buffer, it will be overwritten
 jmp continue
