@@ -77,6 +77,8 @@ string infixToPostfix(const char* argument) {
     if (!operators.empty()) {
         throw "Invalid expression!";
     }
+    
+    postfix.pop_back();
 
     return postfix;
 }

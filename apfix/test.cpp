@@ -5,8 +5,6 @@
 //  Created by MW Giannini on 11/26/22.
 //
 
-#include <iostream>
-#include <assert.h>
 #include "helper.hpp"
 
 using namespace std;

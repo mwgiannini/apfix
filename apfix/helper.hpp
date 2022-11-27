@@ -14,6 +14,8 @@ extern "C" double getValue(const char* input);
 #include <string>
 #include <sstream>
 #include <stack>
+#include <assert.h>
+
 
 using namespace std;
 
