@@ -9,7 +9,8 @@
 #include <string>
 
 extern "C" double getValue(const char* input) {
-    return std::stod(input);
+    std::string s(input);
+    return std::stod(s);
 }
 
 bool isHelpFlag(char* argument) {
