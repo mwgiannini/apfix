@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		C7452B4B2932987300B859B1 /* helper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C7452B492932987300B859B1 /* helper.cpp */; };
-		C7452B4D29329B1A00B859B1 /* eval.s in Sources */ = {isa = PBXBuildFile; fileRef = C7452B4C29329B1A00B859B1 /* eval.s */; };
 		C7452B4F2932A33C00B859B1 /* test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C7452B4E2932A33C00B859B1 /* test.cpp */; };
 /* End PBXBuildFile section */
 
@@ -99,7 +98,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastUpgradeCheck = 1400;
+				LastUpgradeCheck = 1410;
 				TargetAttributes = {
 					C7452B3E2932983C00B859B1 = {
 						CreatedOnToolsVersion = 14.0.1;
@@ -130,7 +129,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7452B4B2932987300B859B1 /* helper.cpp in Sources */,
-				C7452B4D29329B1A00B859B1 /* eval.s in Sources */,
 				C7452B4F2932A33C00B859B1 /* test.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -171,6 +169,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -229,6 +228,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -250,7 +250,9 @@
 		C7452B472932983C00B859B1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 9R3W8G3TMB;
 				ENABLE_HARDENED_RUNTIME = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -260,7 +262,9 @@
 		C7452B482932983C00B859B1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 9R3W8G3TMB;
 				ENABLE_HARDENED_RUNTIME = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";

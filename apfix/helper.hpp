@@ -8,11 +8,16 @@
 #ifndef helper_hpp
 #define helper_hpp
 
+#include <iostream>
 #include <string>
+#include <sstream>
+#include <stack>
 
 using namespace std;
 
 bool isHelpFlag(char* argument);
 bool isValidExpression(char* argument);
-string infixToPostfix(char* argument);
+bool isOperator(const char & op);
+int priority(const char & op);
+string infixToPostfix(const char* argument);
 #endif /* helper_hpp */

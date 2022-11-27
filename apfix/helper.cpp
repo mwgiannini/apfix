@@ -18,11 +18,60 @@ bool isValidExpression(char* argument) {
     return true;
 }
 
-string infixToPostfix(char* argument) {
-    string result = argument;
-    while(*argument != '\0'){
-        cout << argument << endl;
-        argument ++;
+bool isOperator(const char & op) {
+    if( op == '+' || op == '-' || op == '*' || op == '/') {
+        return true;
     }
-    return result;
+    else return false;
 }
+
+int priority(const char & op) {
+    int priority = 1;
+    if(op == '-' || op =='+')
+            priority = 2;
+    if(op == '*' || op =='/')
+            priority = 3;
+    return priority;
+}
+
+
+string infixToPostfix(const char* argument) {
+    stack<char> operators;
+    string postfix;
+    int i = 0;
+    char character = *argument;
+    for (; character != '\0'; i ++) {
+        character = argument[i];
+        // If the character is a space or comma, then skip to next loop
+        if (character != ' ' && character != ',') {
+            if ((character >= '0' && character <= '9')|| character =='.') {
+                postfix += character;
+                if (argument[i+1] == ' ' && argument[i+1] == ',') {
+                    postfix += ',';
+                }
+            }
+            else if(character=='(')
+                operators.push(character);
+            else if(character==')') {
+                while(operators.top()!='(') {
+                    postfix += operators.top();
+                    operators.pop();
+                }
+                operators.pop();
+            }
+            else {
+                while (!operators.empty() && priority(character) <= priority(operators.top())){
+                    postfix += operators.top();
+                    operators.pop();
+                }
+                operators.push(character);
+            }
+        }
+        else if (postfix.back() != ',' && postfix != "") {
+            postfix += ',';
+        }
+    }
+
+    return postfix;
+}
+
