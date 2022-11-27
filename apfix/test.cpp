@@ -59,9 +59,9 @@ int main() {
         
         assert(output == "1.5,33,2.645324,234,+,422,*,+,99,*,342,*,4,*,*,0.4231,+");
     }
-    {
-        string input = " 1+";
-        string output = infixToPostfix(input.c_str());
-    }
+//    {
+//        string input = " 1+";
+//        string output = infixToPostfix(input.c_str());
+//    }
     return 0;
 }

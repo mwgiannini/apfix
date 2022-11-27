@@ -45,7 +45,7 @@ string infixToPostfix(const char* argument) {
     char character = *argument;
     for (; character != '\0'; i ++) {
         if (weight >1 || weight < 0)
-            throw ("Invalid Expression");
+            throw "Invalid Expression";
         character = argument[i];
         // If the character is a space or comma, then skip to next loop
         if (character != ' ' && character != ',') {
@@ -67,6 +67,8 @@ string infixToPostfix(const char* argument) {
                 operators.pop();
             }
             else {
+                if (character != '+' || character != '-' || character != '*' || character != '/' )
+                    throw "Invalid Expression";
                 weight -= 1;
                 postfix += ',';
                 while (!operators.empty() && priority(character) <= priority(operators.top())){
@@ -80,7 +82,7 @@ string infixToPostfix(const char* argument) {
     }
     
     if (weight)
-        throw ("Invalid Expression");
+        throw "Invalid Expression";
     postfix.pop_back();
     return postfix;
 }
