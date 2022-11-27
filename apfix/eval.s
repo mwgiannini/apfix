@@ -35,9 +35,9 @@ cmpb $'+', %al
 je add                              # Jump if +
 cmpb $'-', %al
 je subtract                         # Jump if -
-cmpb $'/', %al
-je multiply                         # Jump if /
 cmpb $'*', %al
+je multiply                         # Jump if /
+cmpb $'/', %al
 je divide                           # Jump if *
 jmp operand                         # Jump if anything else (part of an operand)
 
@@ -55,6 +55,9 @@ incq %rbx
 jmp continue
 
 comma:
+cmp $0, %rbx                        # Continue if the buffer is empty
+je continue
+
 leaq buffer(%rip), %rdx             # Null terminate the buffered string
 movb $0, %al
 movb %al, (%rdx, %rbx, 1)
