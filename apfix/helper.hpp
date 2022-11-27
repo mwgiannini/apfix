@@ -8,16 +8,15 @@
 #ifndef helper_hpp
 #define helper_hpp
 
-extern "C" double evalPostfix(int length, const char* input);
-extern "C" double getValue(const char* input);
 #include <iostream>
 #include <string>
 #include <sstream>
 #include <stack>
 #include <assert.h>
-
-
 using namespace std;
+
+extern "C" double evalPostfix(int length, const char* input);
+extern "C" double getValue(const char* input);
 
 bool isHelpFlag(char* argument);
 bool isValidExpression(char* argument);

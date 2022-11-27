@@ -7,12 +7,10 @@
 
 #include "helper.hpp"
 
-using namespace std;
-
 int main() {
     // Test evalPostfix
     {
-        std::string input = "4.125,5.5,-";
+        string input = "4.125,5.5,-";
         int length = static_cast<int>(input.length());
         double output = evalPostfix(length, input.c_str());
         
