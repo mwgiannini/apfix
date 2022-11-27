@@ -50,26 +50,30 @@ string infixToPostfix(const char* argument) {
                     postfix += ',';
                 }
             }
-            else if(character=='(')
+            else if(character=='(') {
                 operators.push(character);
+            }
             else if(character==')') {
                 while(operators.top()!='(') {
+                    postfix += ',';
                     postfix += operators.top();
                     operators.pop();
                 }
                 operators.pop();
             }
             else {
+                postfix += ',';
                 while (!operators.empty() && priority(character) <= priority(operators.top())){
                     postfix += operators.top();
                     operators.pop();
+                    postfix += ',';
                 }
                 operators.push(character);
             }
         }
-        else if (postfix.back() != ',' && postfix != "") {
-            postfix += ',';
-        }
+    }
+    if (!operators.empty()) {
+        throw "Invalid expression!";
     }
 
     return postfix;
