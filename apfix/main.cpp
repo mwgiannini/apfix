@@ -5,13 +5,11 @@
 //  Created by Amor Wang & MW Giannini on 11/11/22.
 //
 
-#include <iostream>
-#include <algorithm>
 #include "helper.hpp"
 
 int main(int argc, char** argv) {
     char* argument;
-    char* postfix;
+    string postfix;
     double result;
     
     try {
@@ -24,13 +22,14 @@ int main(int argc, char** argv) {
             std::cout << "Assembly Postfix Evaluator\n"
             << "usage: apfix <expression>" << std::endl;
         }
-        
-        // Infix to Postfix
-        postfix = infixToPostfix(argument);
-        
-        // Evaluate the expression
-        result = evalPostfix(postfix);
-        cout << result;
+        else{
+            // Infix to Postfix
+            postfix = infixToPostfix(argument);
+            
+            // Evaluate the expression
+            result = evalPostfix(static_cast<int>(postfix.length()), postfix.c_str());
+            cout << result << endl;
+        }
     }
     catch ( const char* e ) {
         std::cout << e << '\n'

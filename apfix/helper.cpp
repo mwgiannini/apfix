@@ -9,22 +9,16 @@
 #include <string>
 
 extern "C" double getValue(const char* input) {
-    std::string s(input);
-    return std::stod(s);
+    string s(input);
+    return stod(s);
 }
 
 bool isHelpFlag(char* argument) {
-    return true;
-}
-bool isValidExpression(char* argument) {
-    return true;
+    return string(argument) == "-h";
 }
 
 bool isOperator(const char & op) {
-    if( op == '+' || op == '-' || op == '*' || op == '/') {
-        return true;
-    }
-    else return false;
+    return op == '+' || op == '-' || op == '*' || op == '/';
 }
 
 int priority(const char & op) {
@@ -43,10 +37,10 @@ string infixToPostfix(const char* argument) {
     string postfix;
     int i = 0;
     char character = *argument;
-    for (; character != '\0'; i ++) {
-        if (weight >1 || weight < 0)
-            throw ("Invalid Expression");
+    for (; character != 0; i++) {
         character = argument[i];
+        if (weight > 1 || weight < 0)
+            throw "Invalid Expression";
         // If the character is a space or comma, then skip to next loop
         if (character != ' ' && character != ',') {
             if ((character >= '0' && character <= '9')|| character =='.') {
@@ -67,6 +61,9 @@ string infixToPostfix(const char* argument) {
                 operators.pop();
             }
             else {
+                if(!isOperator(character) && character != 0)
+                    throw "Invalid Characters";
+                    
                 weight -= 1;
                 postfix += ',';
                 while (!operators.empty() && priority(character) <= priority(operators.top())){
@@ -80,7 +77,7 @@ string infixToPostfix(const char* argument) {
     }
     
     if (weight)
-        throw ("Invalid Expression");
+        throw "Invalid Expression";
     postfix.pop_back();
     return postfix;
 }

@@ -24,7 +24,7 @@ add $8, %rsp
 _evalPostfix:
 sub $8, %rsp
 movq %rdi, %rcx
-xorq %rbx, %rbx                      # Number of characters in the operand buffer
+xorq %rbx, %rbx                     # Number of characters in the operand buffer
 
 parse:                              # Parse the input string
 lodsb                               # Get the next character
