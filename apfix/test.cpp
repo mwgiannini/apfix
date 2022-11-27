@@ -5,8 +5,6 @@
 //  Created by MW Giannini on 11/26/22.
 //
 
-#include <iostream>
-#include <assert.h>
 #include "helper.hpp"
 
 using namespace std;
@@ -60,9 +58,18 @@ int main() {
             string output = infixToPostfix(input.c_str());
             
         }
+        {
+            string input = " 42 2 -  1";
+            string output = infixToPostfix(input.c_str());
+        }
+        {
+            string input = " 412 31 3 - +-  1";
+            string output = infixToPostfix(input.c_str());
+        }
+
     }
     catch ( const char* e ) {
-        std::cout << e << '\n';
+        cout << e << '\n';
     }
     return 0;
 }

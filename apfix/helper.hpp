@@ -12,6 +12,8 @@
 #include <string>
 #include <sstream>
 #include <stack>
+#include <assert.h>
+
 
 using namespace std;
 
