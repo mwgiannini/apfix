@@ -38,18 +38,21 @@ int priority(const char & op) {
 
 
 string infixToPostfix(const char* argument) {
+    int weight = 0;
     stack<char> operators;
     string postfix;
     int i = 0;
     char character = *argument;
     for (; character != '\0'; i ++) {
+        if (weight >1 || weight < 0)
+            throw ("Invalid Expression");
         character = argument[i];
         // If the character is a space or comma, then skip to next loop
         if (character != ' ' && character != ',') {
             if ((character >= '0' && character <= '9')|| character =='.') {
                 postfix += character;
-                if (argument[i+1] == ' ' && argument[i+1] == ',') {
-                    postfix += ',';
+                if ((argument[i-1] < '0' || argument[i-1] > '9') && argument[i-1] !='.') {
+                    weight += 1;
                 }
             }
             else if(character=='(') {
@@ -64,6 +67,7 @@ string infixToPostfix(const char* argument) {
                 operators.pop();
             }
             else {
+                weight -= 1;
                 postfix += ',';
                 while (!operators.empty() && priority(character) <= priority(operators.top())){
                     postfix += operators.top();
@@ -74,12 +78,10 @@ string infixToPostfix(const char* argument) {
             }
         }
     }
-    if (!operators.empty()) {
-        throw "Invalid expression!";
-    }
     
+    if (weight)
+        throw ("Invalid Expression");
     postfix.pop_back();
-
     return postfix;
 }
 

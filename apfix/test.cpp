@@ -8,7 +8,7 @@
 #include "helper.hpp"
 
 int main() {
-    // Test evalPostfix
+//      Test evalPostfix
     {
         string input = "4.125,5.5,-";
         int length = static_cast<int>(input.length());
@@ -38,28 +38,33 @@ int main() {
         assert(output == 20243977528.625);
     }
     
-    // Test infixToPostfix
+//      Test infixToPostfix
     {
         string input = "1 + 3 - 5 * 20";
         string output = infixToPostfix(input.c_str());
-        
-        assert(output == "1,3,+,5,20,*,-,");
+
+        assert(output == "1,3,+,5,20,*,-");
     }
     {
         string input = "(100 - 43) / 5.7/10";
         string output = infixToPostfix(input.c_str());
-        
-        assert(output == "100,43,-,5.7,/,10,/,");
+
+        assert(output == "100,43,-,5.7,/,10,/");
     }
     {
         string input = " ( ( 1.5 * ( ( ( ( 33 + ( ( 2.645324 +234 ) * 422 ) ) * 99 ) * 342 ) * 4 ) ) + 0.4231 )";
         string output = infixToPostfix(input.c_str());
-        
-        assert(output == "1.5,33,2.645324,234,+,422,*,+,99,*,342,*,4,*,*,0.4231,+,");
+
+        assert(output == "1.5,33,2.645324,234,+,422,*,+,99,*,342,*,4,*,*,0.4231,+");
     }
     {
-        string input = " 1+";
-        string output = infixToPostfix(input.c_str());
+        try {
+            string input = " 1+";
+            string output = infixToPostfix(input.c_str());
+        }
+        catch (const char* e){
+            assert(string(e) == "Invalid Expression");
+        }
     }
     return 0;
 }
