@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C7452B4B2932987300B859B1 /* helper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C7452B492932987300B859B1 /* helper.cpp */; };
-		C7452B512933080300B859B1 /* eval.s in Sources */ = {isa = PBXBuildFile; fileRef = C7452B4C29329B1A00B859B1 /* eval.s */; };
-		C7452B522933087100B859B1 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C7452B422932983C00B859B1 /* main.cpp */; };
+		C7452B4B2932987300B859B1 /* header.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C7452B492932987300B859B1 /* header.cpp */; };
+		C7452B512933080300B859B1 /* evalPostfix.s in Sources */ = {isa = PBXBuildFile; fileRef = C7452B4C29329B1A00B859B1 /* evalPostfix.s */; };
+		C7EAB913293BF8A100701951 /* tests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C7452B4E2932A33C00B859B1 /* tests.cpp */; };
+		C7EAB915293C28C100701951 /* infixToPostfix.s in Sources */ = {isa = PBXBuildFile; fileRef = C7EAB914293C28C100701951 /* infixToPostfix.s */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -27,10 +28,11 @@
 /* Begin PBXFileReference section */
 		C7452B3F2932983C00B859B1 /* apfix */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = apfix; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7452B422932983C00B859B1 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		C7452B492932987300B859B1 /* helper.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = helper.cpp; sourceTree = "<group>"; };
-		C7452B4A2932987300B859B1 /* helper.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = helper.hpp; sourceTree = "<group>"; };
-		C7452B4C29329B1A00B859B1 /* eval.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = eval.s; sourceTree = "<group>"; };
-		C7452B4E2932A33C00B859B1 /* test.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = test.cpp; sourceTree = "<group>"; };
+		C7452B492932987300B859B1 /* header.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = header.cpp; sourceTree = "<group>"; };
+		C7452B4A2932987300B859B1 /* header.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = header.hpp; sourceTree = "<group>"; };
+		C7452B4C29329B1A00B859B1 /* evalPostfix.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = evalPostfix.s; sourceTree = "<group>"; };
+		C7452B4E2932A33C00B859B1 /* tests.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = tests.cpp; sourceTree = "<group>"; };
+		C7EAB914293C28C100701951 /* infixToPostfix.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = infixToPostfix.s; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,11 +65,12 @@
 		C7452B412932983C00B859B1 /* apfix */ = {
 			isa = PBXGroup;
 			children = (
-				C7452B4E2932A33C00B859B1 /* test.cpp */,
+				C7452B4E2932A33C00B859B1 /* tests.cpp */,
 				C7452B422932983C00B859B1 /* main.cpp */,
-				C7452B492932987300B859B1 /* helper.cpp */,
-				C7452B4A2932987300B859B1 /* helper.hpp */,
-				C7452B4C29329B1A00B859B1 /* eval.s */,
+				C7452B492932987300B859B1 /* header.cpp */,
+				C7452B4A2932987300B859B1 /* header.hpp */,
+				C7452B4C29329B1A00B859B1 /* evalPostfix.s */,
+				C7EAB914293C28C100701951 /* infixToPostfix.s */,
 			);
 			path = apfix;
 			sourceTree = "<group>";
@@ -129,9 +132,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C7452B4B2932987300B859B1 /* helper.cpp in Sources */,
-				C7452B512933080300B859B1 /* eval.s in Sources */,
-				C7452B522933087100B859B1 /* main.cpp in Sources */,
+				C7452B4B2932987300B859B1 /* header.cpp in Sources */,
+				C7EAB913293BF8A100701951 /* tests.cpp in Sources */,
+				C7452B512933080300B859B1 /* evalPostfix.s in Sources */,
+				C7EAB915293C28C100701951 /* infixToPostfix.s in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

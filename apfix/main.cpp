@@ -5,7 +5,7 @@
 //  Created by Amor Wang & MW Giannini on 11/11/22.
 //
 
-#include "helper.hpp"
+#include "header.hpp"
 
 int main(int argc, char** argv) {
     char* argument;
