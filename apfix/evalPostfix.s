@@ -64,7 +64,7 @@ cmpq %rdx, %rbx                     # Continue if buffer is empty,
 je continue                         #   operator was just read
 xorb %al, %al
 movb %al, (%rbx)                    # Null terminate buffer
-movq %rdx, %rbx                     # Reset rbx
+movq %rdx, %rbx                     # Clear the buffer
 movq %rdx, %rdi
 push %rsi
 call _getValue              # Get floating point value of operand
