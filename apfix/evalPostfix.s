@@ -26,7 +26,7 @@ sub $8, %rsp
 movq %rdi, %rsi                     # Address of the input string
 leaq buffer(%rip), %rbx             # Address of next buffer byte
 
-parse:                              # Parse the input string
+parse1:                              # Parse the input string
 movb (%rsi), %al                    # Get the next character
 cmpb $',', %al
 je comma                            # Jump if al contains ','
@@ -41,27 +41,27 @@ je divide                           # Jump if al contains '/'
 cmpb $'^', %al
 je power                            # Jump if al contains '^'
 cmpb $0, %al
-je exit                             # Jump if al contains '\0'
-jmp operand                    # Else, al contains part of operand
+je exit1                             # Jump if al contains '\0'
+jmp operand1                    # Else, al contains part of operand
 
-continue:
+continue1:
 incq %rsi                           # Next byte
-jmp parse
+jmp parse1
 
-exit:
+exit1:
 popsd %xmm0                         # Get the result from the stack
 add $8, %rsp
 ret
 
-operand:                            # Add to operand buffer
+operand1:                            # Add to operand buffer
 movb %al, (%rbx)
 incq %rbx
-jmp continue
+jmp continue1
 
 comma:
 leaq buffer(%rip), %rdx
 cmpq %rdx, %rbx                     # Continue if buffer is empty,
-je continue                         #   operator was just read
+je continue1                        #   operator was just read
 xorb %al, %al
 movb %al, (%rbx)                    # Null terminate buffer
 movq %rdx, %rbx                     # Clear the buffer
@@ -70,7 +70,7 @@ push %rsi
 call _getValue              # Get floating point value of operand
 pop %rsi
 pushsd %xmm0                        # Push the value to the stack
-jmp continue
+jmp continue1
 
 # For each operation, pop top two values from stack and return the result to stack
 add:
@@ -78,28 +78,28 @@ popsd %xmm0
 popsd %xmm1
 addsd %xmm0, %xmm1
 pushsd %xmm1
-jmp continue
+jmp continue1
 
 subtract:
 popsd %xmm0
 popsd %xmm1
 subsd %xmm0, %xmm1
 pushsd %xmm1
-jmp continue
+jmp continue1
 
 multiply:
 popsd %xmm0
 popsd %xmm1
 mulsd %xmm0, %xmm1
 pushsd %xmm1
-jmp continue
+jmp continue1
 
 divide:
 popsd %xmm0
 popsd %xmm1
 divsd %xmm0, %xmm1
 pushsd %xmm1
-jmp continue
+jmp continue1
 
 power:
 popsd %xmm1
@@ -108,6 +108,6 @@ push %rsi
 call _getPower
 pop %rsi
 pushsd %xmm0
-jmp continue
+jmp continue1
 
 .end

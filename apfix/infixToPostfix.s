@@ -5,22 +5,45 @@
 #  Created by Amor Wang & MW Giannini on 11/26/22.
 #
 
-.bss
-.lcomm output, 1000                 # Output buffer
+.macro prior ir, or
+cmpb $'+', \ir
+je 1f
+cmpb $'-', \ir
+je 1f
+cmpb $'*', \ir
+je 2f
+cmpb $'/', \ir
+je 2f
+cmpb $'^', \ir
+je 3f
+xorb \or, \or
+jmp 0f
+1:
+movb $1, \or
+jmp 0f
+2:
+movb $2, \or
+jmp 0f
+3:
+movb $3, \or
+jmp 0f
+0:
+.endm
 
 .text
-.global _evalPostfix
-_evalPostfix:
+.global _infixToPostfix
+_infixToPostfix:
 sub $8, %rsp
-movq %rdi, %rsi                     # Address of the input string
-leaq output(%rip), %rbx             # Address of next output byte
+# %rdi                     Address of the output string
+# %rsi                     Address of the input string
+movq %rsp, %rbx          # Bottom of the operator stack
 
-movb (%rsi), %al                    # Get first character
+movb (%rsi), %al         # Get first character
 incq %rsi
 cmpb $'+', %al
-je prepend_zero                     # Jump if first operand positive
+je prepend_zero       # Jump if first operand positive
 cmpb $'-', %al
-je prepend_zero                     # Jump if first operand negative
+je prepend_zero       # Jump if first operand negative
 
 parse:
 cmpb $'(', %al
@@ -29,73 +52,63 @@ cmpb $')', %al
 je return
 cmpb $0, %al
 je return
-cmpb $'+', %al
-je p1
-cmpb $'-', %al
-je p1
-cmpb $'*', %al
-je p2
-cmpb $'/', %al
-je p2
-cmpb $'^', %al
-je p3
-jmp operand
+prior %al, %dl          # Get priority of character
+cmpb $0, %dl         # priority = zero if not operator
+je operand
+jmp operator
 
 continue:
 movb (%rsi), %al
 incq %rsi
 jmp parse
 
-p1:
-movb $1, %cl
-jmp operator
-
-p2:
-movb $2, %cl
-jmp operator
-
-p3:
-movb $3, %cl
-jmp operator
-
 operator:
+movb $',', (%rdi)
+incq %rdi
+cmpq %rsp, %rbx         # Jump if stack empty
+je push_operator
+movb (%rsp), %cl
+prior %cl, %cl
+cmpb %cl, %dl
+jg push_operator
+pop %rdx
+movb %dl, (%rdi)
+incq %rdi
+jmp operator
+
+push_operator:
+push %rax
+jmp continue
 
 operand:
+movb %al, (%rdi)
+incq %rdi
+jmp continue
 
 prepend_zero:
-movb $'0', (%rbx)
-incq %rbx
-movb $',', (%rbx)
-incq %rbx
-movb %al, (%rbx)
-movb (%rsi), %al
-incq %rsi
+movb $'0', (%rdi)
+incq %rdi
+jmp parse
 
 recurse:
-incq %rsi
-movq %rsi, %rdi
-call _evalPostfix
-append_output:
-movb (%rax), %al
-incq %rax
-cmpb $0, %al
-je continue
-movb %al, (%rbx)
-incq %rbx
-jmp append_output
+push %rbx
+call _infixToPostfix
+pop %rbx
+decq %rdi
+jmp continue
 
 return:
-cmpq %rsp, %rbp
-je exit:
-movb $',', (%rbx)
-incq %rbx
-popb %al                            # MIGHT NOT WORK
-movb %al, (%rbx)
-incq %rbx
+cmpq %rsp, %rbx           # Check if the stack is empty
+je exit
+movb $',', (%rdi)
+incq %rdi
+pop %rax
+movb %al, (%rdi)
+incq %rdi
 jmp return
 
 exit:
-movb $0, (%rbx)
-incq %rbx
-leaq output(%rip), %rax
+movb $0, (%rdi)
+incq %rdi
+add $8, %rsp
 ret

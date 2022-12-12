@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		C7452B4B2932987300B859B1 /* header.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C7452B492932987300B859B1 /* header.cpp */; };
-		C7452B512933080300B859B1 /* evalPostfix.s in Sources */ = {isa = PBXBuildFile; fileRef = C7452B4C29329B1A00B859B1 /* evalPostfix.s */; };
-		C7EAB913293BF8A100701951 /* tests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C7452B4E2932A33C00B859B1 /* tests.cpp */; };
 		C7EAB915293C28C100701951 /* infixToPostfix.s in Sources */ = {isa = PBXBuildFile; fileRef = C7EAB914293C28C100701951 /* infixToPostfix.s */; };
+		C7EAB9162946C45800701951 /* evalPostfix.s in Sources */ = {isa = PBXBuildFile; fileRef = C7452B4C29329B1A00B859B1 /* evalPostfix.s */; };
+		C7EAB9192946EE5B00701951 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C7452B422932983C00B859B1 /* main.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -133,9 +133,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7452B4B2932987300B859B1 /* header.cpp in Sources */,
-				C7EAB913293BF8A100701951 /* tests.cpp in Sources */,
-				C7452B512933080300B859B1 /* evalPostfix.s in Sources */,
 				C7EAB915293C28C100701951 /* infixToPostfix.s in Sources */,
+				C7EAB9192946EE5B00701951 /* main.cpp in Sources */,
+				C7EAB9162946C45800701951 /* evalPostfix.s in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

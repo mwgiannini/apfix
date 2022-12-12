@@ -2,7 +2,7 @@
 //  helper.hpp
 //  apfix
 //
-//  Created by MW Giannini on 11/26/22.
+//  Created by Amor Wang & MW Giannini on 11/26/22.
 //
 
 #ifndef helper_hpp
@@ -14,14 +14,13 @@
 #include <stack>
 #include <cmath>
 #include <assert.h>
+using namespace std;
 
-extern "C" const char* infixToPostfix(const char* input) {return 0;}
+extern "C" void infixToPostfix(char* output, const char* input);
 extern "C" double evalPostfix(const char* input);
 extern "C" double getValue(const char* input);
 extern "C" double getPower(double a, double b);
-//bool isValidInfix(const char* input);
-
-bool isHelpFlag(char* argument);
-bool isOperator(const char & op);
+bool isHelpFlag(const char* argument);
+bool isValidInfix(const char* input);
 
 #endif /* helper_hpp */

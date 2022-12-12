@@ -6,35 +6,28 @@
 //
 
 #include "header.hpp"
+using namespace std;
 
 int main(int argc, char** argv) {
-    char* argument;
-    string postfix;
+    const char* argument = argv[1];
+    char* postfix = static_cast<char*>(malloc(1000));
     double result;
-    
     try {
-        // Parse argument
         if(argc != 2) {
-            throw "Invalid arguments!";
+            throw "Invalid arguments!\ntry: apfix -h";
         }
-        argument = argv[1];
         if(isHelpFlag(argument)) {
-            std::cout << "Assembly Postfix Evaluator\n"
-            << "usage: apfix <expression>" << std::endl;
+            throw "Assembly Postfix Evaluator\nusage: apfix <expression>";
         }
-        else{
-            // Infix to Postfix
-            postfix = infixToPostfix(argument);
-            
-            // Evaluate the expression
-            result = evalPostfix(static_cast<int>(postfix.length()), postfix.c_str());
-            cout << result << endl;
-        }
+        if(!isValidInfix(argument))
+            throw "Invalid expression!";
+        infixToPostfix(postfix, argument);
+        result = evalPostfix(postfix);
+        cout << result << endl;
     }
     catch ( const char* e ) {
-        std::cout << e << '\n'
-        << "try: apfix -h" << std::endl;
+        std::cout << e << std::endl;
     }
-    
+    free(postfix);
     return 0;
 }

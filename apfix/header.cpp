@@ -14,11 +14,9 @@ extern "C" double getValue(const char* input) {
 extern "C" double getPower(double a, double b) {
     return std::pow(a, b);
 }
-
-bool isHelpFlag(char* argument) {
+bool isHelpFlag(const char* argument) {
     return std::string(argument) == "-h";
 }
-
-bool isOperator(const char & op) {
-    return op == '+' || op == '-' || op == '*' || op == '/';
+bool isValidInfix(const char* argument){
+    return true;
 }
